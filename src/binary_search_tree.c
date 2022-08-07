@@ -1,3 +1,12 @@
+/**
+ * @file binary_search_tree.c
+ * @author sabakugaara
+ * @brief
+ * @version 0.1
+ * @date 2022-08-07
+ *
+ * @copyright Copyright (c) 2022
+ */
 #include <stdlib.h>
 #include "binary_search_tree.h"
 

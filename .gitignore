@@ -30,6 +30,7 @@ Footer
 lib*.a
 src/main
 tests/check_binary_search_tree
+tests/check_avl_tree
 compile
 ar-lib
 ltmain.sh

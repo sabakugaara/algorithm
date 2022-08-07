@@ -66,21 +66,24 @@ b_s_tree *create_tree(int x) {
 // 插入一个值 x 的算法：
 // 1. 如果值比当前节点大，则尝试插入其右子节点，否则尝试插入其左节点
 // 2. 如果子节点为 NULL 则插入该位置，否则继续第一步。
-void insert_tree(b_s_tree **current_node, int x, b_s_tree *parent_node) {
-  if (*current_node == NULL) {
-    b_s_tree *p;
-    p = malloc(sizeof(b_s_tree));
-    p->item = x;
-    p->left = NULL;
-    p->right = NULL;
+/**
+ * @brief
+ *
+ * @param root_node
+ * @param x
+ * @param parent_node
+ */
+void insert_tree(b_s_tree **root_node, int x, b_s_tree *parent_node) {
+  if (*root_node == NULL) {
+    b_s_tree *p = create_tree(x);
     p->parent = parent_node;
-    *current_node = p; // 之所以声明 **current_node 就是为了这一步把原来指向 NULL 的指针改为指向 p
+    *root_node = p; // 之所以声明 **current_node 就是为了这一步把原来指向 NULL 的指针改为指向 p
     return;
   }
-  if ((*current_node)->item > x) {
-    insert_tree(&((*current_node)->left), x, *current_node);
+  if ((*root_node)->item > x) {
+    insert_tree(&((*root_node)->left), x, *root_node);
   } else {
-    insert_tree(&((*current_node)->right), x, *current_node);
+    insert_tree(&((*root_node)->right), x, *root_node);
   }
 }
 

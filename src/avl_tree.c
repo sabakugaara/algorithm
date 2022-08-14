@@ -12,9 +12,6 @@
 #include<stdlib.h>
 #include "utility.h"
 #include "avl_tree.h"
-// int max(int a, int b) {
-//   return a > b ? a : b;
-// }
 
 /**
  * get tree height
@@ -127,30 +124,36 @@ void insert_avl_tree(avl_tree **root_node, int x, avl_tree *parent_node) {
   int balance = get_balance(*root_node);
 
   if (balance < -1 && x > (*root_node)->right->item) {
-    // NOTE: right unbalanced & left rotation
+    // NOTE: right unbalanced, do left rotation
     left_rotation(*root_node);
     return;
   }
 
   else if (balance < -1 && x < (*root_node)->right->item) {
-    // NOTE: right unbalanced & right-left rotation
+    // NOTE: right unbalanced, do right-left rotation
     right_left_rotation(*root_node);
     return;
   }
 
   else if (balance > 1 && x < (*root_node)->left->item) {
-    // NOTE: left unbalanced & right rotation
+    // NOTE: left unbalanced, do right rotation
     right_rotation(*root_node);
     return;
   }
 
   else if (balance > 1 && x > (*root_node)->left->item) {
-    // NOTE: left unbalanced & left-right rotation
+    // NOTE: left unbalanced, do left-right rotation
     left_right_rotation(*root_node);
     return;
   }
 }
 
+/**
+ * pre-order traversal of the tree
+ *
+ * @param t
+ * @param f
+ */
 void traverse_avl_tree(avl_tree *t, void (*f)(int))
 {
   if (t != NULL) {
